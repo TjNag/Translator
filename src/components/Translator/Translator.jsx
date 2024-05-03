@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MdSwapHoriz, MdClear, MdSync } from 'react-icons/md';  // Import necessary icons
 import languageList from './Language.json';  // Ensure this path is correct and the JSON file is properly formatted
-
+import'../Translator/Translator.css';
 export default function Translator() {
     const [inputFormat, setInputFormat] = useState('en');
     const [outputFormat, setOutputFormat] = useState('hi');
@@ -48,14 +48,14 @@ export default function Translator() {
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container favcol rounded-2xl justify-center mx-auto p-4">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
                 <select className="flex-grow p-2 border border-gray-300 rounded text-gray-700" value={inputFormat} onChange={(e) => setInputFormat(e.target.value)}>
                     {Object.keys(languageList).map(key => (
                         <option key={key} value={key}>{languageList[key].name}</option>
                     ))}
                 </select>
-                <MdSwapHoriz className='text-3xl cursor-pointer hover:text-blue-500 transition-colors duration-200' onClick={handleReverseLanguage} />
+                <MdSwapHoriz className='text-3xl cursor-pointer hover:text-orange-300 transition-colors duration-200' onClick={handleReverseLanguage} />
                 <select className="flex-grow p-2 border border-gray-300 rounded text-gray-700" value={outputFormat} onChange={(e) => setOutputFormat(e.target.value)}>
                     {Object.keys(languageList).map(key => (
                         <option key={key} value={key}>{languageList[key].name}</option>
@@ -67,7 +67,7 @@ export default function Translator() {
                 {inputText && <MdClear className='absolute top-2 right-2 text-3xl text-gray-700 cursor-pointer hover:text-red-500 transition-colors duration-200' onClick={handleRemoveInputText} />}
             </div>
             <div className="p-2 mt-2 border border-gray-300 rounded bg-gray-100 text-gray-700">{translatedText}</div>
-            <button className={`mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-200 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleTranslate} disabled={loading}>
+            <button className={`mt-4 w-full butcol border-2 hover:bg-hovcol text-white font-bold py-2 px-4 rounded transition-colors duration-200 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleTranslate} disabled={loading}>
                 {loading ? <MdSync className="animate-spin inline mr-2" /> : 'Translate'}
             </button>
         </div>
